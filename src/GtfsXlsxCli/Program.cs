@@ -19,7 +19,7 @@ namespace GtfsXlsxCli
             public bool Verbose { get; set; }
 
             [Option('x', "to-xlsx", Required = false, HelpText = "Convert from GTFS static to an Excel workbook")]
-            public bool ToXlsx { get; set; }
+            public bool? ToXlsx { get; set; }
 
             [Option('f', "from", Required = true, HelpText = "File to read from")]
             public string From { get; set; }
@@ -39,7 +39,7 @@ namespace GtfsXlsxCli
                             .SetMinimumLevel(options.Verbose ? LogLevel.Trace : LogLevel.Warning))
                         .BuildServiceProvider())
                     {
-                        if (options.ToXlsx)
+                        if (DetermineToXlsx(options))
                         {
                             GtfsToXlsx(options, serviceProvider);
                         }
@@ -49,6 +49,16 @@ namespace GtfsXlsxCli
                         }
                     }
                 });
+        }
+
+        private static bool DetermineToXlsx(Options o)
+        {
+            if (o.ToXlsx != null) return o.ToXlsx.Value;
+
+            if (o.To.EndsWith(".xslx")) return true;
+            if (o.From.EndsWith(".zip")) return true;
+
+            return false;
         }
 
         private static void XlsxToGtfs(Options o, ServiceProvider serviceProvider)

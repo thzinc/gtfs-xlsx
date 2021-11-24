@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["GTFS", "xslx"]
+  "cSpell.words": ["GTFS", "xslx"],
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*"
+  }
 }

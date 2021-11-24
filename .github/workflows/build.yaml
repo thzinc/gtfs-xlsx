@@ -1,0 +1,61 @@
+name: dotnet package
+
+on: [push]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: ${{ github.ref }}
+      - run: git checkout "${GITHUB_REF:11}"
+      - uses: syncromatics/gogitver-action@v0.0.4
+        id: gogitver
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0"
+      - run: make package
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.gogitver.outputs.version }}
+          release_name: Release ${{ steps.gogitver.outputs.version }}
+          draft: false
+          prerelease: false
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/linux.tar.gz
+          asset_name: linux.tar.gz
+          asset_content_type: application/gzip
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/windows.zip
+          asset_name: windows.zip
+          asset_content_type: application/zip
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/arm.tar.gz
+          asset_name: arm.tar.gz
+          asset_content_type: application/gzip
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/darwin.tar.gz
+          asset_name: darwin.tar.gz
+          asset_content_type: application/gzip

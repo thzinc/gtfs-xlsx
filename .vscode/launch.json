@@ -1,0 +1,42 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "gtfs-to-xlsx",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/GtfsXlsxCli/bin/Debug/netcoreapp3.1/GtfsXlsxCli.dll",
+      "args": [
+        "-v",
+        "-f",
+        "${workspaceFolder}/test/resources/gtfs-to-xlsx.zip",
+        "-t",
+        "${workspaceFolder}/test/resources/gtfs-to-xlsx.xlsx"
+      ],
+      "cwd": "${workspaceFolder}/src/GtfsXlsxCli",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "xlsx-to-gtfs",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/GtfsXlsxCli/bin/Debug/netcoreapp3.1/GtfsXlsxCli.dll",
+      "args": [
+        "-v",
+        "-f",
+        "${workspaceFolder}/test/resources/xlsx-to-gtfs.xlsx",
+        "-t",
+        "${workspaceFolder}/test/resources/xlsx-to-gtfs.zip"
+      ],
+      "cwd": "${workspaceFolder}/src/GtfsXlsxCli",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    }
+  ]
+}

@@ -17,6 +17,8 @@ jobs:
         with:
           dotnet-version: "6.0"
       - run: make package
+        env:
+          VERSION: ${{ steps.gogitver.outputs.version }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

@@ -16,4 +16,4 @@ package: build
 	(cd artifacts/windows && zip -r ../windows.zip GtfsXlsxCli.exe)
 
 ship:
-	dotnet nuget push --source --api-key "$(NUGET_API_KEY)" artifacts/*.nupkg
+	dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$(NUGET_API_KEY)" artifacts/*.nupkg

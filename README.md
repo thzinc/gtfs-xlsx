@@ -6,21 +6,27 @@ Converts a [GTFS Static][gtfs-static] feed file into a Microsoft Excel workbook 
 
 ## Quickstart
 
-Download the [latest release][releases] for your operating system and architecture.
+Install `GtfsXlsxCli` using one of the following methods:
 
-Convert to Microsoft Excel workbook
+1. Use `dotnet` to install a global tool:
+   ```bash
+   dotnet tool install --global GtfsXlsxCli
+   ```
+2. Download the [latest release][releases] for your operating system and architecture and unarchive/unzip it into a path on your computer.
+
+Convert to Microsoft Excel workbook:
 
 ```bash
 GtfsXlsxCli --from "MyFeed.zip" --to "MyFeed.xlsx"
 ```
 
-Convert to GTFS Static feed file
+Convert to GTFS Static feed file:
 
 ```bash
 GtfsXlsxCli --from "MyFeed.xlsx" --to "MyFeed.zip"
 ```
 
-Get description of all command line arguments
+Get description of all command line arguments:
 
 ```bash
 GtfsXlsxCli --help
@@ -30,6 +36,10 @@ GtfsXlsxCli --help
 
 ## Building
 
+[![Build status][build-img]][build]
+[![latest GitHub release][release-img]][release]
+[![Latest NuGet version][nuget-img]][nuget]
+
 The project can be loaded with VSCode or Visual Studio for local development.
 
 To build and package for each supported OS/architecture:
@@ -37,6 +47,13 @@ To build and package for each supported OS/architecture:
 ```bash
 make package
 ```
+
+[build-img]: https://img.shields.io/github/workflow/status/thzinc/gtfs-xlsx/dotnet%20package
+[build]: https://github.com/thzinc/gtfs-xlsx/actions/workflows/build.yaml
+[release-img]: https://img.shields.io/github/v/release/thzinc/gtfs-xlsx?sort=semver
+[release]: https://github.com/thzinc/gtfs-xlsx/releases/latest
+[nuget-img]: https://img.shields.io/nuget/v/GtfsXlsxCli
+[nuget]: https://www.nuget.org/packages/GtfsXlsxCli
 
 ## Code of Conduct
 

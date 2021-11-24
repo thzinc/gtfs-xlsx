@@ -16,9 +16,10 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: "6.0"
-      - run: make package
+      - run: make build package ship
         env:
           VERSION: ${{ steps.gogitver.outputs.version }}
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

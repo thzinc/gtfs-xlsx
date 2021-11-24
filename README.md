@@ -2,6 +2,8 @@
 
 Converts a [GTFS Static][gtfs-static] feed file into a Microsoft Excel workbook for convenient manual editing. Also converts an Excel workbook back to a GTFS Static feed file.
 
+![Screenshot of a GTFS feed unzipped into a directory next to Microsoft Excel with spreadsheet tabs for each of the files](screenshot.png)
+
 [gtfs-static]: https://developers.google.com/transit/gtfs
 
 ## Quickstart

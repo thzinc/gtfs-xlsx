@@ -50,7 +50,7 @@ To build and package for each supported OS/architecture:
 make package
 ```
 
-[build-img]: https://img.shields.io/github/workflow/status/thzinc/gtfs-xlsx/dotnet%20package
+[build-img]: https://img.shields.io/github/actions/workflow/status/thzinc/gtfs-xlsx/build.yaml
 [build]: https://github.com/thzinc/gtfs-xlsx/actions/workflows/build.yaml
 [release-img]: https://img.shields.io/github/v/release/thzinc/gtfs-xlsx?sort=semver
 [release]: https://github.com/thzinc/gtfs-xlsx/releases/latest

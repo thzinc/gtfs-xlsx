@@ -12,7 +12,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - run: git checkout "${GITHUB_REF:11}"
-      - uses: syncromatics/gogitver-action@v0.0.4
+      - uses: syncromatics/gogitver-action@v0.0.7
         id: gogitver
       - uses: actions/setup-dotnet@v1
         with:
